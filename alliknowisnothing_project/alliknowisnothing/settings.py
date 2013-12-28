@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.conf.global_settings import INTERNAL_IPS
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -21,7 +22,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -34,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'blog',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,3 +84,12 @@ STATIC_URL = '/static/'
 
 from confidential import SECRET_KEY
 
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+INTERNAL_IPS = (
+                '127.0.0.1'
+)
